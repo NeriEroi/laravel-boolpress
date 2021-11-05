@@ -6,20 +6,20 @@
         <div class="row">
             <div class="col-12">
                 <h1>
-                    NUOVO POST
+                    MODIFICA POST
                 </h1>
-                <form action="{{ route('admin.posts.store') }}" method="POST">
+                <form action="{{ route('admin.posts.update', $post->id) }}" method="post">
                     @csrf
-                    @method('POST')
+                    @method('PUT')
 
                     <div class="form-group">
                         <label for="title">Titolo</label>
-                        <input type="text" name="title" class="form-control">
+                        <input type="text" name="title" class="form-control" value="{{ $post->title }}">
                     </div>
 
                     <div class="form-group">
                         <label for="content">Contenuto</label>
-                        <textarea name="content" id="content" class="form-control"></textarea>
+                        <textarea name="content" id="content" class="form-control">{!! $post->content !!}</textarea>
                     </div>
 
                     <div class="form-group">

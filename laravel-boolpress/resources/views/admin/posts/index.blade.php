@@ -8,7 +8,7 @@
                 <h5 class="text-secondary">{{ $post->title }}</h5>
             </li>
             <a class="btn btn-primary mb-5" href="{{ route('admin.posts.show', $post->slug) }}">Details</a>
-            <a class="btn btn-warning mb-5" href="">Modify</a>
+            <a class="btn btn-warning mb-5" href="{{ route('admin.posts.edit', $post->id) }}">Modify</a>
             <form class="d-inline" method="POST" action="">
                 @csrf
                 @method('DELETE')
