@@ -5,8 +5,15 @@
     <ul>
         @foreach ($posts as $post)
             <li>
-                <a href="{{ route('admin.posts.show', $post->slug) }}">{{ $post->title }}</a>
+                <h5 class="text-secondary">{{ $post->title }}</h5>
             </li>
+            <a class="btn btn-primary mb-5" href="{{ route('admin.posts.show', $post->slug) }}">Details</a>
+            <a class="btn btn-warning mb-5" href="">Modify</a>
+            <form class="d-inline" method="POST" action="">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger mb-5">Delete</button>
+            </form>
         @endforeach
     </ul>
 
