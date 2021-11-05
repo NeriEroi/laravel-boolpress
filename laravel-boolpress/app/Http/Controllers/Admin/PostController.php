@@ -56,7 +56,7 @@ class PostController extends Controller
 
         $new_post->slug = $slug;
         $new_post->save();
-        return redirect()->route('admin.posts.index')->with('inserted', 'POST SALVATO');
+        return redirect()->route('admin.posts.index')->with('status', 'POST SALVATO');
     }
 
     /**
@@ -117,7 +117,7 @@ class PostController extends Controller
 
         $post->update($form_data);
 
-        return redirect()->route('admin.posts.index')->with('updated', 'POST AGGIORNATO');
+        return redirect()->route('admin.posts.index')->with('status', 'POST AGGIORNATO');
     }
 
     /**
@@ -129,6 +129,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index')->with('deleted', 'POST ELIMINATO');
+        return redirect()->route('admin.posts.index')->with('status', 'POST ELIMINATO');
     }
 }
