@@ -12,6 +12,12 @@
         @foreach ($posts as $post)
             <li>
                 <h5 class="text-secondary">{{ $post->title }}</h5>
+                <h5>
+                    CATEGORIA :
+                    @if ($post->category)
+                        {{ $post->category->name }}
+                    @endif
+                </h5>
             </li>
             <a class="btn btn-primary mb-5" href="{{ route('admin.posts.show', $post->slug) }}">Details</a>
             <a class="btn btn-warning mb-5" href="{{ route('admin.posts.edit', $post->id) }}">Modify</a>
