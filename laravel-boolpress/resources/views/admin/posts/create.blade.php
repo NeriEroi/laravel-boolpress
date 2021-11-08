@@ -30,6 +30,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="category_id">Categorie: </label>
+                        <select name="category_id" id="category">
+                            @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <button type="submit" class="btn btn-success">
                             CREA POST
                         </button>
