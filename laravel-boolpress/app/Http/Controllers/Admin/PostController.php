@@ -45,6 +45,7 @@ class PostController extends Controller
         $request->validate([
             'title'=> 'required|max:255',
             'content' => 'required',
+            "tags" => 'exists:tags,id'
         ]);
 
 
@@ -66,6 +67,10 @@ class PostController extends Controller
 
         $new_post->slug = $slug;
         $new_post->save();
+
+        // Attach
+        $new_post->tags()->attach($form_data['tags']);
+
         return redirect()->route('admin.posts.index')->with('status', 'POST SALVATO');
     }
 
