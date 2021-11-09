@@ -38,6 +38,19 @@
                         </select>
                     </div>
 
+                    {{-- stampa dei tags  --}}
+                    <div class="form-group">
+                        <p>Tags: </p>
+                        <div class="form-check">
+                            @foreach ($tags as $tag)
+                                <div class="form-check form-check-inline">
+                                    <input value="{{ $tag->id }}" id="{{ 'tag' . $tag->id }}" type="checkbox" name="tags[]" class="form-check-input">
+                                    <label for="{{ 'tag' . $tag->id }}" class="form-check-label">{{ $tag->name }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">
                             CREA POST
