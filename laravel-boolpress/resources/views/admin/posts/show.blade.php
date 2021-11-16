@@ -14,6 +14,9 @@
                 <p>
                     {{ $post->content }}
                 </p>
+                @if ($post->cover)
+                    <img src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }}"><br>
+                @endif
                 <small>
                     Slug: {{ $post->slug }}
                 </small>

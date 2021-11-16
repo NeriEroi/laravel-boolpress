@@ -9,7 +9,7 @@
                     NUOVO POST
                 </h1>
 
-                <form action="{{ route('admin.posts.store') }}" method="POST">
+                <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
 
@@ -28,6 +28,16 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    {{-- immagine --}}
+                    <div class="form-group">
+                        <label class="d-block" for="image">Immagine</label>
+                        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+                        @error('image')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    {{-- immagine --}}
 
                     <div class="form-group">
                         <label for="category_id">Categorie: </label>
