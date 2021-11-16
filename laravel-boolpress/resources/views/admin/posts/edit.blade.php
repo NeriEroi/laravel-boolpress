@@ -8,7 +8,7 @@
                 <h1>
                     MODIFICA POST
                 </h1>
-                <form action="{{ route('admin.posts.update', $post->id) }}" method="post">
+                <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -27,6 +27,26 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    {{-- immagine --}}
+                    <div class="form-group">
+                        @if ($post->cover)
+                            <p>
+                                Immagine attuale:
+                            </p>
+                            <img class="d-block" src="{{ asset( 'storage/' . $post->cover ) }}" alt="">
+                        @else
+                            <p>
+                                Immagine assente
+                            </p>
+                        @endif
+                        <label class="d-block" for="image">Immagine</label>
+                        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+                        @error('image')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    {{-- immagine --}}
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">
